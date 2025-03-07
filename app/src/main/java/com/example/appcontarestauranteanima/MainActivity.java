@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
     EditText etConta;
     Button btCalcular;
 TextView tvResultado;
-
+    TextView tvGorjeta;
+    TextView tv_agradecimento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +35,18 @@ TextView tvResultado;
         etConta = findViewById(R.id.et_conta);
         btCalcular = findViewById(R.id.bt_calcular);
         tvResultado = findViewById(R.id.tv_resultado);
+        tvGorjeta = findViewById(R.id.tv_gorjeta_garcom);
+tv_agradecimento = findViewById(R.id.tv_agradecimento);
 
         btCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 double conta = Double.parseDouble(etConta.getText().toString());
+                double gorjeta = conta * 0.10;
                 conta = conta * 1.10;
+                tvGorjeta.setText(String.format("R$ %.2f", gorjeta));
                 tvResultado.setText(String.format("R$ %.2f", conta));
+                tv_agradecimento.setText(String.format("Obrigado pela preferência!"));
             }
         });
 
